@@ -82,7 +82,7 @@ async function checkDatabaseHealth(
     });
     clearTimeout(timer);
     const latency = Math.round(performance.now() - started);
-    // 401 = service is up but anon key lacks REST access; treat as degraded, not down
+    // 401 = service is up but anon key lacks REST access; treat as unstable, not down
     const reachable = res.ok || res.status === 401;
     const partialFailure = reachable && !res.ok;
     return {

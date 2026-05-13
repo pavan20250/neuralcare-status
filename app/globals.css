@@ -99,3 +99,10 @@ body {
     transform: scale(1.08);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .status-pulse,
+  .animate-pulse {
+    animation: none;
+  }
+}

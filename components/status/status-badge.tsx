@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const labels: Record<ServiceHealthStatus, string> = {
   operational: "Operational",
-  degraded: "Degraded",
+  unstable: "Unstable",
   down: "Down",
   unknown: "Unknown",
 };
@@ -19,7 +19,7 @@ export function StatusBadge({
   const variant =
     status === "operational"
       ? "success"
-      : status === "degraded"
+      : status === "unstable"
         ? "warning"
         : status === "down"
           ? "destructive"

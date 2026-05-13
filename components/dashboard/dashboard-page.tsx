@@ -24,7 +24,7 @@ function scoreService(
   s: AggregatedStatusResponse["services"][number],
 ): number | null {
   if (s.status === "operational") return 100;
-  if (s.status === "degraded") return 50;
+  if (s.status === "unstable") return 50;
   if (s.status === "down") return 0;
   return null;
 }
@@ -40,7 +40,7 @@ function computeCompositeUptime(services: AggregatedStatusResponse["services"]) 
 function statusHeadline(services: AggregatedStatusResponse["services"]) {
   const total = services.length;
   const bad = services.filter(
-    (s) => s.status === "down" || s.status === "degraded",
+    (s) => s.status === "down" || s.status === "unstable",
   ).length;
   const ok = services.filter((s) => s.status === "operational").length;
   if (bad > 0) {

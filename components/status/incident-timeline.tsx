@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import type { Incident } from "@/types/status";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 const incidentBadge: Record<
@@ -47,7 +48,11 @@ export function IncidentTimeline({
       </CardHeader>
       <CardContent className="px-4 pb-3 pt-0">
         {incidents.length === 0 ? (
-          <p className="text-xs text-muted-foreground">No incidents.</p>
+          <div className="flex flex-col items-center gap-2 py-5 text-center">
+            <CheckCircle2 className="h-8 w-8 text-success/60" />
+            <p className="text-sm font-medium text-foreground/80">All systems normal</p>
+            <p className="text-xs text-muted-foreground">No incidents reported recently.</p>
+          </div>
         ) : (
           <ol className="space-y-3">
             {items.map((inc, idx) => (
@@ -61,11 +66,11 @@ export function IncidentTimeline({
                 <div className="flex flex-wrap items-center gap-1.5">
                   <Badge
                     variant={incidentBadge[inc.status]}
-                    className="px-1.5 py-0 text-[10px]"
+                    className="px-2 py-0.5"
                   >
                     {inc.status}
                   </Badge>
-                  <span className="text-[11px] text-muted-foreground">
+                  <span className="text-xs text-muted-foreground">
                     {new Date(inc.startedAt).toLocaleDateString(undefined, {
                       month: "short",
                       day: "numeric",
@@ -74,7 +79,7 @@ export function IncidentTimeline({
                   </span>
                 </div>
                 <p className="mt-1 text-sm font-medium leading-snug">{inc.title}</p>
-                <p className="mt-0.5 text-[11px] leading-snug text-muted-foreground">
+                <p className="mt-0.5 text-xs leading-snug text-muted-foreground">
                   {truncate(inc.description, 120)}
                 </p>
               </motion.li>

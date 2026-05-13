@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import type { ServiceHealthStatus } from "@/types/status";
 import { StatusDot } from "@/components/status/status-dot";
 import { formatRelativeAgo } from "@/utils/time";
-import { cn } from "@/lib/utils";
 
 export function StatusHero({
   headline,
@@ -41,7 +40,7 @@ export function StatusHero({
                 ({formatRelativeAgo(lastChecked)})
               </span>
               {isValidating ? (
-                <span className={cn("ml-1.5 text-foreground/70", "animate-pulse")}>
+                <span className="ml-1.5 animate-pulse text-foreground/70">
                   · updating
                 </span>
               ) : null}

@@ -1,6 +1,6 @@
 export type ServiceHealthStatus =
   | "operational"
-  | "degraded"
+  | "unstable"
   | "down"
   | "unknown";
 
