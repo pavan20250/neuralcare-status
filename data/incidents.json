@@ -1,0 +1,20 @@
+[
+  {
+    "id": "inc-2026-04-12",
+    "title": "Elevated latency on AI Chat Engine",
+    "description": "We observed slower streaming responses from the chat engine while upstream capacity was rebalanced.",
+    "status": "resolved",
+    "startedAt": "2026-04-12T14:20:00.000Z",
+    "resolvedAt": "2026-04-12T15:05:00.000Z",
+    "affectedServices": ["chat-engine"]
+  },
+  {
+    "id": "inc-2026-03-02",
+    "title": "Gemini API quota warnings",
+    "description": "Provider-side rate limits caused intermittent 429 responses. Retries and backoff were enabled across clients.",
+    "status": "resolved",
+    "startedAt": "2026-03-02T09:10:00.000Z",
+    "resolvedAt": "2026-03-02T11:40:00.000Z",
+    "affectedServices": ["gemini"]
+  }
+]
