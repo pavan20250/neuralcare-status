@@ -82,17 +82,18 @@ async function checkDatabaseHealth(
     });
     clearTimeout(timer);
     const latency = Math.round(performance.now() - started);
-    const ok = res.ok;
-    let partialFailure = false;
-    if (ok) {
-      const ct = res.headers.get("content-type") ?? "";
-      partialFailure = !ct.includes("json");
-    }
+    // 401 = service is up but anon key lacks REST access; treat as degraded, not down
+    const reachable = res.ok || res.status === 401;
+    const partialFailure = reachable && !res.ok;
     return {
       latency,
-      ok,
-      partialFailure: ok ? partialFailure : undefined,
-      message: !ok ? `HTTP ${res.status}` : partialFailure ? "Unexpected REST root response" : undefined,
+      ok: reachable,
+      partialFailure,
+      message: res.status === 401
+        ? "Add service_role key for full DB checks (Supabase → Settings → API)"
+        : !res.ok
+        ? `HTTP ${res.status}`
+        : undefined,
     };
   } catch (e) {
     const msg = (e as Error).message;
