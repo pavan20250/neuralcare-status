@@ -20,7 +20,7 @@ export function LatencyChart({ data }: { data: LatencyChartPoint[] }) {
   return (
     <Card className="glass-panel border-border/50 bg-card/40 dark:bg-card/25">
       <CardHeader className="px-4 pb-1 pt-3">
-        <CardTitle className="text-xs font-medium text-muted-foreground">
+        <CardTitle className="text-xs font-semibold text-foreground/80">
           Latency (avg)
         </CardTitle>
       </CardHeader>

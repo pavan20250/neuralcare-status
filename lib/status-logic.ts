@@ -7,19 +7,19 @@ export function classifyFromLatencyAndOk(opts: {
   timedOut?: boolean;
 }): ServiceHealthStatus {
   if (opts.timedOut || !opts.ok) return "down";
-  if (opts.partialFailure) return "degraded";
+  if (opts.partialFailure) return "unstable";
   const latency = opts.latencyMs;
   if (latency === null) return "unknown";
   if (latency < 500) return "operational";
-  if (latency > 1000) return "degraded";
-  return "degraded";
+  if (latency > 1000) return "unstable";
+  return "unstable";
 }
 
 export function worstStatus(
   statuses: ServiceHealthStatus[],
 ): ServiceHealthStatus {
   if (statuses.includes("down")) return "down";
-  if (statuses.includes("degraded")) return "degraded";
+  if (statuses.includes("unstable")) return "unstable";
   if (statuses.includes("unknown")) return "unknown";
   return "operational";
 }

@@ -9,7 +9,7 @@ export default function Home() {
           refreshMs={publicEnv.refreshInterval()}
           appName={publicEnv.appName()}
         />
-        <footer className="mt-auto border-t border-border/50 px-4 py-3 text-center text-[11px] text-muted-foreground">
+        <footer className="mt-auto border-t border-border/50 px-4 py-4 text-center text-xs text-muted-foreground">
           © {new Date().getFullYear()} {publicEnv.appName()} · status.neuralcare-ai.com
         </footer>
       </main>

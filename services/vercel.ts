@@ -76,7 +76,7 @@ export async function checkVercelHealth(): Promise<ServiceStatus> {
       return {
         service: "Vercel Hosting",
         serviceId,
-        status: "degraded",
+        status: "unstable",
         latency,
         uptime: null,
         lastChecked,

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const colors: Record<ServiceHealthStatus, string> = {
   operational: "bg-success shadow-[0_0_0_6px] shadow-success/25",
-  degraded: "bg-warning shadow-[0_0_0_6px] shadow-warning/25",
+  unstable: "bg-warning shadow-[0_0_0_6px] shadow-warning/25",
   down: "bg-destructive shadow-[0_0_0_6px] shadow-destructive/25",
   unknown: "bg-muted-foreground shadow-[0_0_0_6px] shadow-muted/30",
 };
