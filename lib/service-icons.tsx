@@ -5,12 +5,10 @@ import {
   MessageSquare,
   Server,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 import type { ServiceId } from "@/types/status";
 
 export const serviceIcons: Record<ServiceId, LucideIcon> = {
-  gemini: Sparkles,
   backend: Server,
   "supabase-database": Database,
   "supabase-auth": ShieldCheck,

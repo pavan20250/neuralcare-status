@@ -5,7 +5,6 @@ export type ServiceHealthStatus =
   | "unknown";
 
 export type ServiceId =
-  | "gemini"
   | "backend"
   | "supabase-database"
   | "supabase-auth"

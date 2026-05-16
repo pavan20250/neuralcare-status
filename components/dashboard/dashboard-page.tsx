@@ -2,10 +2,9 @@
 
 import useSWR from "swr";
 import { useEffect, useMemo, useState } from "react";
-import type { AggregatedStatusResponse, Incident } from "@/types/status";
+import type { AggregatedStatusResponse } from "@/types/status";
 import { StatusHero } from "@/components/status/status-hero";
 import { StatusCard } from "@/components/status/status-card";
-import { IncidentTimeline } from "@/components/status/incident-timeline";
 import { UptimeChart, type UptimeChartPoint } from "@/components/charts/uptime-chart";
 import { LatencyChart, type LatencyChartPoint } from "@/components/charts/latency-chart";
 import { LoadingSkeleton } from "@/components/status/loading-skeleton";
@@ -67,14 +66,6 @@ export function DashboardPage({
       revalidateOnFocus: true,
     },
   );
-
-  const { data: incidentsPayload } = useSWR<{ incidents: Incident[] }>(
-    "/api/incidents",
-    jsonFetcher,
-    { refreshInterval: refreshMs * 4 },
-  );
-
-  const incidents = incidentsPayload?.incidents ?? [];
 
   const [uptimeSeries, setUptimeSeries] = useState<UptimeChartPoint[]>([]);
   const [latencySeries, setLatencySeries] = useState<LatencyChartPoint[]>([]);
@@ -160,7 +151,7 @@ export function DashboardPage({
           <LatencyChart data={latencySeries} />
         </section>
 
-        <IncidentTimeline incidents={incidents} maxItems={4} />
+
       </div>
     </div>
   );

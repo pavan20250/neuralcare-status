@@ -10,11 +10,11 @@
   },
   {
     "id": "inc-2026-03-02",
-    "title": "Gemini API quota warnings",
+    "title": "Gemini Backend API quota warnings",
     "description": "Provider-side rate limits caused intermittent 429 responses. Retries and backoff were enabled across clients.",
     "status": "resolved",
     "startedAt": "2026-03-02T09:10:00.000Z",
     "resolvedAt": "2026-03-02T11:40:00.000Z",
-    "affectedServices": ["gemini"]
+    "affectedServices": ["backend"]
   }
 ]
