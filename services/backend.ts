@@ -12,7 +12,7 @@ export async function checkBackendHealth(): Promise<ServiceStatus> {
 
   if (!base) {
     return {
-      service: "NeuralCare Backend API",
+      service: "Gemini Backend API",
       serviceId,
       status: "unknown",
       latency: null,
@@ -37,7 +37,7 @@ export async function checkBackendHealth(): Promise<ServiceStatus> {
     const latency = Math.round(performance.now() - started);
     const ok = res.ok;
     return {
-      service: "NeuralCare Backend API",
+      service: "Gemini Backend API",
       serviceId,
       status: classifyFromLatencyAndOk({ ok, latencyMs: latency }),
       latency,
@@ -51,7 +51,7 @@ export async function checkBackendHealth(): Promise<ServiceStatus> {
     const latency = Math.round(performance.now() - started);
     const timedOut = (e as Error).name === "AbortError";
     return {
-      service: "NeuralCare Backend API",
+      service: "Gemini Backend API",
       serviceId,
       status: classifyFromLatencyAndOk({
         ok: false,

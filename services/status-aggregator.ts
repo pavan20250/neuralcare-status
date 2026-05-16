@@ -1,6 +1,5 @@
 import type { AggregatedStatusResponse, ServiceStatus } from "@/types/status";
 import { worstStatus } from "@/lib/status-logic";
-import { checkGeminiHealth } from "@/services/gemini";
 import { checkBackendHealth } from "@/services/backend";
 import { checkSupabaseBundle } from "@/services/supabase";
 import { checkVercelHealth } from "@/services/vercel";
@@ -8,13 +7,11 @@ import { checkChatEngineHealth } from "@/services/chat-engine";
 
 export async function getAggregatedStatus(): Promise<AggregatedStatusResponse> {
   const [
-    gemini,
     backend,
     supabase,
     vercel,
     chatEngine,
   ] = await Promise.all([
-    checkGeminiHealth(),
     checkBackendHealth(),
     checkSupabaseBundle(),
     checkVercelHealth(),
@@ -22,7 +19,6 @@ export async function getAggregatedStatus(): Promise<AggregatedStatusResponse> {
   ]);
 
   const services: ServiceStatus[] = [
-    gemini,
     backend,
     supabase.database,
     supabase.auth,

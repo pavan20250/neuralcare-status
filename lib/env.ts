@@ -5,8 +5,6 @@ function readEnv(key: string): string | undefined {
 }
 
 export const serverEnv = {
-  geminiApiKey: () => readEnv("GEMINI_API_KEY"),
-  geminiModel: () => readEnv("GEMINI_MODEL") ?? "gemini-2.5-flash",
   backendApiUrl: () => readEnv("BACKEND_API_URL"),
   backendHealthEndpoint: () => {
     const ep = readEnv("BACKEND_HEALTH_ENDPOINT");
